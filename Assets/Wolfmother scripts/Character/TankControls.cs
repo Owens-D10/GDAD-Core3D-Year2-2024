@@ -5,11 +5,7 @@ using UnityEngine.InputSystem;
 public class TankControls : MonoBehaviour
 {
 
-    [SerializeField] CharacterController controller;
 
-    [SerializeField] private float playerSpeed = 3f;
-
-    [SerializeField] private float playerRotation = 40f;
 
     public GameObject Player;
     public bool isWalking;
@@ -20,7 +16,7 @@ public class TankControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")) ;
+         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
          {
              isWalking = true;
              Player.GetComponent<Animator>().Play("Walk_N");
@@ -29,8 +25,12 @@ public class TankControls : MonoBehaviour
              Player.transform.Rotate(0, horizontalMove, 0);
              Player.transform.Translate(0, 0, verticalMove);
          }
+         else
+        {
+            isWalking = false;
+        }
 
-       // PlayerMovement();
+       
 
     }
 
