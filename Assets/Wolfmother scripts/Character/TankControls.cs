@@ -16,18 +16,17 @@ public class TankControls : MonoBehaviour
     public float walkingSpeed = 4f;
     public float runningSpeed = 7f;
     public float movementSpeed;
-
+    private Animator playerAnimator;
     // Update is called once per frame
     private void Start()
     {
-       
+        
     }
     void Update()
     {
          if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
          {
              isWalking = true;
-             Player.GetComponent<Animator>().Play("Walk_N");
              horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 150;
              verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * movementSpeed;
              Player.transform.Rotate(0, horizontalMove, 0);
