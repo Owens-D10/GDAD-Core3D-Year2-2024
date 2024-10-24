@@ -8,38 +8,37 @@ public class TankControls : MonoBehaviour
 
 
     public GameObject Player;
-    int isWalkingHash;
+    public bool isWalking;
     public float horizontalMove;
     public float verticalMove;
     private Vector3 playerInput;
-    int isRunningHash;
+    public bool isRunning;
     public float walkingSpeed = 4f;
     public float runningSpeed = 7f;
     public float movementSpeed;
-    Animator animator;
+    
     
     // Update is called once per frame
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        isWalkingHash = Animator.StringToHash("isWalking");
-        isRunningHash = Animator.StringToHash("isRunning");
+
     }
     void Update()
     {
-        bool isWalking =animator.GetBool(isWalkingHash);
-        bool isRunning =animator.GetBool(isRunningHash);    
+
          if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
          {
-             
+            isWalking = true;
+            Player.GetComponent<Animator>().Play("Walking");
              horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 150;
              verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * movementSpeed;
              Player.transform.Rotate(0, horizontalMove, 0);
              Player.transform.Translate(0, 0, verticalMove);
          }
-         else
+        else
         {
             isWalking = false;
+            Player.GetComponent<Animator>().Play("Idle");
         }
 
         if (Input.GetButton("Run"))
