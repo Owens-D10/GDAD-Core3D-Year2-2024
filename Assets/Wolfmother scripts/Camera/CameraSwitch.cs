@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class CameraSwitch : MonoBehaviour
 {
-    public GameObject CameraA;
-    public GameObject CameraB;
+    public GameObject From;
+    public GameObject To;
     public bool camOn = false;
     public int cameraNumber;
     void Start()
@@ -19,8 +19,8 @@ public class CameraSwitch : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            CameraB.SetActive(true);
-            CameraA.SetActive(false);
+            To.SetActive(true);
+            From.SetActive(false);
         }
     }
 }
