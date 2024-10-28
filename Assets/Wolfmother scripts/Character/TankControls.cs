@@ -17,7 +17,6 @@ public class TankControls : MonoBehaviour
     public float runningSpeed = 7f;
     public float movementSpeed;
     
-    
     // Update is called once per frame
     private void Start()
     {
@@ -25,33 +24,36 @@ public class TankControls : MonoBehaviour
     }
     void Update()
     {
+        if (WeaponMechanics.isAiming == false)
+        {
 
-         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
-         {
-            isWalking = true;
-            Player.GetComponent<Animator>().Play("Walking");
-             horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 150;
-             verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * movementSpeed;
-             Player.transform.Rotate(0, horizontalMove, 0);
-             Player.transform.Translate(0, 0, verticalMove);
-         }
-        else
-        {
-            isWalking = false;
-            Player.GetComponent<Animator>().Play("Idle");
-        }
 
-        if (Input.GetButton("Run"))
-        {
-            isRunning = true;
-            movementSpeed = runningSpeed;
+            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+            {
+                isWalking = true;
+                Player.GetComponent<Animator>().Play("Walking");
+                horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 150;
+                verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * movementSpeed;
+                Player.transform.Rotate(0, horizontalMove, 0);
+                Player.transform.Translate(0, 0, verticalMove);
+            }
+            else
+            {
+                isWalking = false;
+                Player.GetComponent<Animator>().Play("Idle");
+            }
+
+            if (Input.GetButton("Run"))
+            {
+                isRunning = true;
+                movementSpeed = runningSpeed;
+            }
+            else
+            {
+                isRunning = false;
+                movementSpeed = walkingSpeed;
+            }
         }
-        else
-        {
-            isRunning = false;
-            movementSpeed = walkingSpeed;
-        }
-       
 
     }
 
