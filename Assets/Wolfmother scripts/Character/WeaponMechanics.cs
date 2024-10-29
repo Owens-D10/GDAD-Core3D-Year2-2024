@@ -15,8 +15,10 @@ public class WeaponMechanics : MonoBehaviour
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
     public float bulletSpeed = 10f;
-    public int Ammo = 10;
+    public int ammoCount = 10;
     public AudioSource gunClick;
+    public int ammoGain = 5;
+    
     // Update is called once per frame
     void Update()
     {
@@ -41,14 +43,14 @@ public class WeaponMechanics : MonoBehaviour
             }
 
             // Firing Gun
-            if (Input.GetButton("ActionButton") && isFiring == false && Ammo > 0)
+            if (Input.GetButton("ActionButton") && isFiring == false && ammoCount > 0)
             {
                 isFiring = true;
                 var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
                 bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
                 StartCoroutine(FiringWeapon());
             }
-            if(Input.GetButton("ActionButton") &&isFiring == false && Ammo == 0)
+            if(Input.GetButton("ActionButton") &&isFiring == false && ammoCount == 0)
             {
                 isFiring = true;
                 StartCoroutine(GunClick());
@@ -64,7 +66,7 @@ public class WeaponMechanics : MonoBehaviour
     {
         gunshot.Play();
         Player.GetComponent<Animator>().Play("Shooting");
-        Ammo -= 1;
+        ammoCount -= 1;
         yield return new WaitForSeconds(fireRate);
         Player.GetComponent<Animator>().Play("Aiming");
         isFiring = false;
@@ -75,5 +77,10 @@ public class WeaponMechanics : MonoBehaviour
         gunClick.Play();
         yield return new WaitForSeconds(fireRate);
         isFiring = false;
+    }
+
+    public void AmmoGain()
+    {
+        ammoCount += ammoGain;
     }
 }
