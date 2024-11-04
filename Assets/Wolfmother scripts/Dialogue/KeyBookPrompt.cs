@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 using UnityEditor.Rendering;
+using Unity.VisualScripting;
 
 
 public class KeyBookPrompt : MonoBehaviour
@@ -16,22 +17,42 @@ public class KeyBookPrompt : MonoBehaviour
     public GameObject brokenWindow;
     public AudioSource windowBreak;
     public GameObject wolf1;
+    public PlayerStatus playerStatus;
+    public bool inRange = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player" && Input.GetButtonDown("ActionButton") && WeaponMechanics.isAiming == false)
+        if(other.tag == "Player")
+        {
+            inRange = true;
+        }
+
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inRange = false;
+        }
+    }
+
+    void Update()
+    {
+        if (inRange == true && Input.GetButtonUp("ActionButton") && WeaponMechanics.isAiming == false)
         {
             dialogueBox.SetActive(true);
             Time.timeScale = 0;
         }
-
     }
+
 
     public void YesButton()
     {
-        Destroy(keyBook);
+        keyBook.SetActive(false);
         Hide();
-        StartCoroutine(BreakWindow());
+        BreakWindow();
+        playerStatus.hasBook = true;
+        inRange = false;
     }
 
     public void NoButton()
@@ -47,9 +68,8 @@ public class KeyBookPrompt : MonoBehaviour
         dialogueBox.SetActive(false);
     }
 
-    IEnumerator BreakWindow()
+    void BreakWindow()
     {
-        yield return new WaitForSeconds(1);
         windowBreak.Play();
         window.SetActive(false);
         brokenWindow.SetActive(true);

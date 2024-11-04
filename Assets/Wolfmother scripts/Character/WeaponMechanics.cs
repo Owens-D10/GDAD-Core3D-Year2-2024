@@ -18,11 +18,12 @@ public class WeaponMechanics : MonoBehaviour
     public int ammoCount = 10;
     public AudioSource gunClick;
     public int ammoGain = 5;
+    public PlayerStatus playerStatus;
     
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Aim"))
+        if (Input.GetButtonDown("Aim") && playerStatus.isPaused == false)
         {
             isAiming = true;
             Player.GetComponent<Animator>().Play("Aiming");

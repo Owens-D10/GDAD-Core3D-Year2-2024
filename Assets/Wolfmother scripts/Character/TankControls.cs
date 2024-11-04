@@ -16,7 +16,8 @@ public class TankControls : MonoBehaviour
     public float walkingSpeed = 4f;
     public float runningSpeed = 7f;
     public float movementSpeed;
-    
+    public PlayerStatus playerStatus;
+
     // Update is called once per frame
     private void Start()
     {
@@ -28,7 +29,7 @@ public class TankControls : MonoBehaviour
         {
 
 
-            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+            if (Input.GetButton("Horizontal") && playerStatus.isPaused == false || Input.GetButton("Vertical") && playerStatus.isPaused == false)
             {
                 isWalking = true;
                 Player.GetComponent<Animator>().Play("Walking");
