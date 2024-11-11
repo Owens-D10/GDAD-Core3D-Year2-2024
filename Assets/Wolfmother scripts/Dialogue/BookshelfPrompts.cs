@@ -43,7 +43,7 @@ public class BookshelfPrompts : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        else if(dialogueShowing == true && Input.GetButtonUp("ActionButton"))
+        else if(dialogueShowing == true && Input.GetButtonDown("ActionButton"))
         {
             dialogueShowing = false;
             HideDialogue();

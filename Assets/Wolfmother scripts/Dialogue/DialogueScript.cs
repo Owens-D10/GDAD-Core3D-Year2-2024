@@ -27,7 +27,7 @@ public class DialogueScript : MonoBehaviour
 
     void Update()
     {
-        if (inRange == true && Input.GetButtonUp("ActionButton") && WeaponMechanics.isAiming == false && dialogueShowing == false)
+        if (inRange == true && Input.GetButtonDown("ActionButton") && WeaponMechanics.isAiming == false && dialogueShowing == false)
         {
             dialogueBox.SetActive(true);
             Time.timeScale = 0;
@@ -36,7 +36,7 @@ public class DialogueScript : MonoBehaviour
 
 
 
-        else if (dialogueShowing == true && Input.GetButtonUp("ActionButton"))
+        else if (dialogueShowing == true && Input.GetButtonDown("ActionButton"))
         {
             dialogueShowing = false;
             Hide();

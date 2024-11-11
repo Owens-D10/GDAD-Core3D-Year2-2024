@@ -38,7 +38,7 @@ public class KeyBookPrompt : MonoBehaviour
 
     void Update()
     {
-        if (inRange == true && Input.GetButtonUp("ActionButton") && WeaponMechanics.isAiming == false)
+        if (inRange == true && Input.GetButtonDown("ActionButton") && WeaponMechanics.isAiming == false)
         {
             dialogueBox.SetActive(true);
             Time.timeScale = 0;

@@ -27,12 +27,12 @@ public class WeaponMechanics : MonoBehaviour
         {
             isAiming = true;
             Player.GetComponent<Animator>().Play("Aiming");
+
             
         }
         else if(Input.GetButtonUp("Aim"))
         {
             isAiming = false;
-            
         }
 
         if (isAiming == true)
@@ -84,4 +84,6 @@ public class WeaponMechanics : MonoBehaviour
     {
         ammoCount += ammoGain;
     }
+
+    
 }
