@@ -16,7 +16,7 @@ public class SimpleWerewolfMove : MonoBehaviour
 
     void Update()
     {
-        if (vision.playerSpotted == true && vision.playerInRange == true)
+        if (vision.playerSpotted  == true)
         agent.SetDestination(destination.transform.position);
     }
 }
