@@ -19,6 +19,9 @@ public class KeyBookPrompt : MonoBehaviour
     public GameObject wolf1;
     public PlayerStatus playerStatus;
     public bool inRange = false;
+    public GameObject itemGlint;
+    public GameObject itemCamera;
+    public GameObject player;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -42,6 +45,9 @@ public class KeyBookPrompt : MonoBehaviour
         {
             dialogueBox.SetActive(true);
             Time.timeScale = 0;
+            itemCamera.SetActive(true);
+            itemGlint.SetActive(false);
+            player.SetActive(false);
         }
     }
 
@@ -53,12 +59,17 @@ public class KeyBookPrompt : MonoBehaviour
         BreakWindow();
         playerStatus.hasBook = true;
         inRange = false;
+        itemCamera.SetActive(false);
+        player.SetActive(true);
     }
 
     public void NoButton()
     {
 
         Hide();
+        itemCamera.SetActive(false);
+        itemGlint.SetActive(true); 
+        player.SetActive(true);
     }
 
     private void Hide()

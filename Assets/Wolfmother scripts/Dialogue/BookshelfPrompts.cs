@@ -12,6 +12,8 @@ public class BookshelfPrompts : MonoBehaviour
     public GameObject bookshelf;
     public bool inRange = false;
     public bool dialogueShowing = false;
+    public GameObject itemCamera;
+    public GameObject player;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -35,18 +37,24 @@ public class BookshelfPrompts : MonoBehaviour
             dialogueBox.SetActive(true);
             Time.timeScale = 0;
             dialogueShowing = true;
+            itemCamera.SetActive(true);
+            player.SetActive(false);
         }
 
         else if (inRange == true && Input.GetButtonUp("ActionButton") && WeaponMechanics.isAiming == false && playerStatus.hasBook == true)
         {
             promptBox.SetActive(true);
             Time.timeScale = 0;
+            itemCamera.SetActive(true);
+            player.SetActive(false);
         }
 
         else if(dialogueShowing == true && Input.GetButtonDown("ActionButton"))
         {
             dialogueShowing = false;
             HideDialogue();
+            itemCamera.SetActive(false);
+            player.SetActive(true);
         }
 
     }
@@ -58,12 +66,16 @@ public class BookshelfPrompts : MonoBehaviour
         keyBook.SetActive(true);
         inRange = false;
         bookshelf.GetComponent<Animator>().Play("bookshelf_move");
+        itemCamera.SetActive(false);
+        player.SetActive(true);
     }
 
     public void NoButton()
     {
 
         HidePrompt();
+        itemCamera.SetActive(false);
+        player.SetActive(true);
     }
 
     private void HidePrompt()

@@ -9,6 +9,8 @@ public class DialogueScript : MonoBehaviour
     public PlayerStatus playerStatus;
     public bool inRange = false;
     public bool dialogueShowing = false;
+    public GameObject itemCamera;
+    public GameObject player;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -32,6 +34,8 @@ public class DialogueScript : MonoBehaviour
             dialogueBox.SetActive(true);
             Time.timeScale = 0;
             dialogueShowing = true;
+            itemCamera.SetActive(true);
+            player.SetActive(false);
         }
 
 
@@ -40,6 +44,8 @@ public class DialogueScript : MonoBehaviour
         {
             dialogueShowing = false;
             Hide();
+            itemCamera.SetActive(false);
+            player.SetActive(true);
         }
 
     }

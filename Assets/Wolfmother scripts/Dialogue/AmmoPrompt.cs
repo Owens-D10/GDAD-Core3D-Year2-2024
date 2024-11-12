@@ -13,6 +13,9 @@ public class AmmoPrompt : MonoBehaviour
     public GameObject dialogueBox;
     public GameObject ammoBox;
     public bool inRange = false;
+    public GameObject itemGlint;
+    public GameObject itemCamera;
+    public GameObject player;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,6 +31,9 @@ public class AmmoPrompt : MonoBehaviour
         {
             dialogueBox.SetActive(true);
             Time.timeScale = 0;
+            itemGlint.SetActive(false);
+            itemCamera.SetActive(true);
+            player.SetActive(false);
         }
     }
 
@@ -36,12 +42,17 @@ public class AmmoPrompt : MonoBehaviour
         weaponMechanics.AmmoGain();
         ammoBox.SetActive(false);
         Hide();
+        itemCamera.SetActive(false);
+        player.SetActive(true);
     }
 
     public void NoButton()
     {
 
         Hide();
+        itemGlint.SetActive(true);
+        itemCamera.SetActive(false);
+        player.SetActive(true);
     }
 
     private void Hide()

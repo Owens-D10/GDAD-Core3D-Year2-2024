@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EnemyVision : MonoBehaviour
 {
@@ -12,12 +13,17 @@ public class EnemyVision : MonoBehaviour
     public LayerMask targetMask;
     public LayerMask obstructionMask;
     public bool playerSpotted;
+    public bool playerInAttackRange;
+    public float attackRadius;
+    [Range(0, 360)]
+    public float attackAngle;
 
 
 
     void Update()
     {
         FieldOfViewCheck();
+        AttackCheck();
     }
     private void FieldOfViewCheck()
     {
@@ -36,15 +42,9 @@ public class EnemyVision : MonoBehaviour
                 {
                     playerSpotted = true;
                 }
-                else
-                {
-                    playerSpotted = false;
-                }
+                
             }
-            else
-            {
-                playerSpotted = false;
-            }
+            
              
         }
         else if(playerSpotted == true)
@@ -53,7 +53,42 @@ public class EnemyVision : MonoBehaviour
         }
     }
 
+    private void AttackCheck()
+    {
+        Collider[] rangeCheck = Physics.OverlapSphere(transform.position, attackRadius, targetMask);
 
+        if (rangeCheck.Length != 0)
+        {
+            Transform target = rangeCheck[0].transform;
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
 
+            if (Vector3.Angle(transform.forward, directionToTarget) < attackAngle / 2)
+            {
+                float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                {
+                    playerInAttackRange = true;
+                }
+                else
+                {
+                    playerInAttackRange = false;
+                }
+            }
+            else
+            {
+                playerInAttackRange = false;
+            }
+
+        }
+        else if (playerInAttackRange == true)
+        {
+            playerInAttackRange = false;
+        }
+    }
 }
+
+
+
+
+

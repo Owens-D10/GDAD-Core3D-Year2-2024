@@ -25,6 +25,23 @@ public class EnemyVisionEditor : Editor
             Handles.DrawLine(fov.transform.position, fov.player.transform.position);
         }
 
+        
+        Handles.color = Color.yellow;
+        Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.attackRadius);
+
+        Vector3 attackAngle01 = DirectionFromAngle(fov.transform.eulerAngles.y, -fov.attackAngle / 2);
+        Vector3 attackAngle02 = DirectionFromAngle(fov.transform.eulerAngles.y, fov.attackAngle / 2);
+
+        Handles.color = Color.red;
+        Handles.DrawLine(fov.transform.position, fov.transform.position + attackAngle01 * fov.attackRadius);
+        Handles.DrawLine(fov.transform.position, fov.transform.position + attackAngle02 * fov.attackRadius);
+
+        if (fov.playerInAttackRange == true)
+        {
+            Handles.color = Color.black;
+            Handles.DrawLine(fov.transform.position, fov.player.transform.position);
+        }
+
     }
 
     private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
