@@ -25,6 +25,13 @@ public class AmmoPrompt : MonoBehaviour
         }
 
     }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inRange = false;
+        }
+    }
     void Update()
     {
         if (inRange == true && Input.GetButtonDown("ActionButton") && WeaponMechanics.isAiming == false)
@@ -35,6 +42,7 @@ public class AmmoPrompt : MonoBehaviour
             itemCamera.SetActive(true);
             player.SetActive(false);
         }
+        
     }
 
     public void YesButton()

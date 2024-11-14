@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyHealth : MonoBehaviour
 {
 
     public int health = 5;
+    public Rigidbody rb;
+    public BoxCollider collide;
+    public NavMeshAgent agent;
+    public EnemyVision enemyVision;
+    public SimpleWerewolfMove werewolfMove;
+
 
 
     // Update is called once per frame
@@ -13,7 +20,8 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health == 0)
         {
-            Destroy(gameObject);
+            GetComponent<Animator>().Play("werewolf_death");
+           
         }
     }
 
@@ -23,6 +31,16 @@ public class EnemyHealth : MonoBehaviour
         {
             health -= BulletProjectile.damage;
         }
+    }
+    
+    void Death()
+    {
+        rb.useGravity = false;
+        collide.enabled = false;
+        agent.enabled = false;
+        enemyVision.enabled = false;
+        werewolfMove.enabled = false;
+
     }
 
 }
