@@ -27,20 +27,13 @@ public class SimpleWerewolfMove : MonoBehaviour
         {
             werewolf.GetComponent<Animator>().Play("werewolf_idle");
         }
-
-        while (vision.playerInAttackRange == true)
+        else if (vision.playerInAttackRange == true)
         {
-            EnemyAttack();
+            GetComponent<Animator>().Play("werewolf_attack");
         }
         
     }
     
 
-    void EnemyAttack()
-    {
-        if(vision.playerInAttackRange == true)
-        {
-            GetComponent<Animator>().Play("werewolf_attack");
-        }
-    }
+    
 }

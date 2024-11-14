@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.tag == "Bullet" && health > 0)
         {
             health -= BulletProjectile.damage;
         }
