@@ -26,7 +26,7 @@ public class EnemyVisionEditor : Editor
         }
 
         
-        Handles.color = Color.yellow;
+        Handles.color = Color.red;
         Handles.DrawWireArc(fov.transform.position, Vector3.up, Vector3.forward, 360, fov.attackRadius);
 
         Vector3 attackAngle01 = DirectionFromAngle(fov.transform.eulerAngles.y, -fov.attackAngle / 2);

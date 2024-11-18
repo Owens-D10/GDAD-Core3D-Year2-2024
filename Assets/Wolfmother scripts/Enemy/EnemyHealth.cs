@@ -33,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
     
-    void Death()
+    public void Death()
     {
         rb.useGravity = false;
         collide.enabled = false;

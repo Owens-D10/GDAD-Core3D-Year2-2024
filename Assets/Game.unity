@@ -6433,6 +6433,16 @@ PrefabInstance:
       propertyPath: destination
       value: 
       objectReference: {fileID: 474214700}
+    - target: {fileID: 1709622657439679856, guid: 6902aebc9c70dde4db5112e4afa7b66c,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792666296023754236, guid: 6902aebc9c70dde4db5112e4afa7b66c,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
     - target: {fileID: 7308616470255543663, guid: 6902aebc9c70dde4db5112e4afa7b66c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7384,7 +7394,7 @@ Rigidbody:
   m_GameObject: {fileID: 474214700}
   serializedVersion: 4
   m_Mass: 0.0000001
-  m_Drag: 0
+  m_Drag: 100
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -17392,6 +17402,7 @@ MonoBehaviour:
   dialogueShowing: 0
   itemCamera: {fileID: 767367845}
   player: {fileID: 474214700}
+  werewolf: {fileID: 0}
 --- !u!95 &1236231580
 Animator:
   serializedVersion: 5
@@ -19822,7 +19833,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -19841,13 +19852,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770012264}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821794, y: -0.6408562, z: -0.10938155, w: 0.6408566}
+  m_LocalRotation: {x: 0.6811557, y: 0.019016866, z: 0.016692296, w: 0.73170125}
   m_LocalPosition: {x: 93.1, y: 30.8, z: 27.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 22.521, y: -99.639, z: -45.905}
+  m_LocalEulerAnglesHint: {x: 84.984, y: 35.335, z: 35.146}
 --- !u!1001 &1782478178
 PrefabInstance:
   m_ObjectHideFlags: 0

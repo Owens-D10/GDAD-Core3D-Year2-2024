@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Assertions.Must;
 
 public class SimpleWerewolfMove : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SimpleWerewolfMove : MonoBehaviour
     NavMeshAgent agent;
     public EnemyVision vision;
     public GameObject werewolf;
+    public float attackCooldown;
 
     void Start()
     {
@@ -29,9 +31,25 @@ public class SimpleWerewolfMove : MonoBehaviour
         }
         else if (vision.playerInAttackRange == true)
         {
-            GetComponent<Animator>().Play("werewolf_attack");
+            StartCoroutine(Attack());
         }
         
+    }
+    
+    public IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(3);
+        if (vision.playerInAttackRange == true)
+        {
+            werewolf.GetComponent<Animator>().Play("werewolf_attack");
+        }
+    }
+    public void RepeatAttack()
+    {
+        if(vision.playerInAttackRange == true)
+        {
+            StartCoroutine (Attack());
+        }
     }
     
 

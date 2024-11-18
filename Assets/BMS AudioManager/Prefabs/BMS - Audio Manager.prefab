@@ -54,4 +54,5 @@ MonoBehaviour:
     type: 3}
   musicTrackNames: []
   ambientAudioTrackNames: []
-  soundEffectNames: []
+  soundEffectNames:
+  - Gunshot_SFX
