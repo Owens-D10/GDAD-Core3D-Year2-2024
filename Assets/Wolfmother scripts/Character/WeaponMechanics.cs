@@ -19,6 +19,9 @@ public class WeaponMechanics : MonoBehaviour
     public AudioSource gunClick;
     public int ammoGain = 5;
     public PlayerStatus playerStatus;
+    public float range;
+    public int damage = 1;
+    public Transform player;
     
     // Update is called once per frame
     void Update()
@@ -26,13 +29,14 @@ public class WeaponMechanics : MonoBehaviour
         if (Input.GetButtonDown("Aim") && playerStatus.isPaused == false)
         {
             isAiming = true;
-            Player.GetComponent<Animator>().Play("Aiming");
+            GetComponent<Animator>().SetBool("isAiming", true);
 
             
         }
         else if(Input.GetButtonUp("Aim"))
         {
             isAiming = false;
+            GetComponent<Animator>().SetBool("isAiming", false);
         }
 
         if (isAiming == true)
@@ -47,8 +51,8 @@ public class WeaponMechanics : MonoBehaviour
             if (Input.GetButton("ActionButton") && isFiring == false && ammoCount > 0)
             {
                 isFiring = true;
-                var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-                bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
+                Shoot();
+                
                 StartCoroutine(FiringWeapon());
             }
             if(Input.GetButton("ActionButton") &&isFiring == false && ammoCount == 0)
@@ -66,10 +70,9 @@ public class WeaponMechanics : MonoBehaviour
     IEnumerator FiringWeapon()
     {
         gunshot.Play();
-        Player.GetComponent<Animator>().Play("Shooting");
+        GetComponent<Animator>().SetTrigger("Shoot");
         ammoCount -= 1;
         yield return new WaitForSeconds(fireRate);
-        Player.GetComponent<Animator>().Play("Aiming");
         isFiring = false;
     }
 
@@ -83,6 +86,20 @@ public class WeaponMechanics : MonoBehaviour
     public void AmmoGain()
     {
         ammoCount += ammoGain;
+    }
+
+    public void Shoot()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.forward, out hit, range))
+        {
+            EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
+            if (enemy  != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+        }
+        
     }
 
     

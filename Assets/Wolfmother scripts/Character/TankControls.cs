@@ -32,7 +32,7 @@ public class TankControls : MonoBehaviour
             if (Input.GetButton("Horizontal") && playerStatus.isPaused == false || Input.GetButton("Vertical") && playerStatus.isPaused == false)
             {
                 isWalking = true;
-                Player.GetComponent<Animator>().Play("Walking");
+                GetComponent<Animator>().SetBool("isWalking", true);
                 horizontalMove = Input.GetAxis("Horizontal") * Time.deltaTime * 150;
                 verticalMove = Input.GetAxis("Vertical") * Time.deltaTime * movementSpeed;
                 Player.transform.Rotate(0, horizontalMove, 0);
@@ -41,7 +41,7 @@ public class TankControls : MonoBehaviour
             else
             {
                 isWalking = false;
-                Player.GetComponent<Animator>().Play("Idle");
+                GetComponent<Animator>().SetBool("isWalking", false);
             }
 
             if (Input.GetButton("Run"))

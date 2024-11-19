@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class EnemyHealth : MonoBehaviour, IDamagable
+public class PlayerHealth : MonoBehaviour, IDamagable
 {
+
     public int currentHealth;
-    public int maxHealth = 3;
+    public int maxHealth = 7;
 
     void Start()
     {

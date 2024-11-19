@@ -11,6 +11,8 @@ public class SimpleWerewolfMove : MonoBehaviour
     public EnemyVision vision;
     public GameObject werewolf;
     public float attackCooldown;
+    public int damage = 1;
+    public PlayerHealth player;
 
     void Start()
     {
@@ -23,34 +25,25 @@ public class SimpleWerewolfMove : MonoBehaviour
         if (vision.playerSpotted == true && vision.playerInAttackRange == false)
         {
             agent.SetDestination(destination.transform.position);
-            werewolf.GetComponent<Animator>().Play("werewolf_walking");
+            GetComponent<Animator>().SetBool("IsMoving", true);
         }
         else if (vision.playerSpotted == false)
         {
-            werewolf.GetComponent<Animator>().Play("werewolf_idle");
+            GetComponent<Animator>().SetBool("IsMoving", false);
         }
         else if (vision.playerInAttackRange == true)
         {
-            StartCoroutine(Attack());
+            GetComponent<Animator>().SetTrigger("Attack");
         }
+        
         
     }
     
-    public IEnumerator Attack()
+    void Damage()
     {
-        yield return new WaitForSeconds(3);
-        if (vision.playerInAttackRange == true)
-        {
-            werewolf.GetComponent<Animator>().Play("werewolf_attack");
-        }
+        player.TakeDamage(damage);
     }
-    public void RepeatAttack()
-    {
-        if(vision.playerInAttackRange == true)
-        {
-            StartCoroutine (Attack());
-        }
-    }
+    
     
 
     
