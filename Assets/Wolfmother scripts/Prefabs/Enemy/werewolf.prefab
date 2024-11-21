@@ -320,6 +320,10 @@ MonoBehaviour:
   vision: {fileID: 6343654318392745286}
   werewolf: {fileID: 7937237381656543189}
   attackCooldown: 0
+  damage: 1
+  player: {fileID: 0}
+  health: {fileID: 8337194466232108255}
+  animator: {fileID: 5236486014957963637}
 --- !u!65 &3024852527905607282
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -427,12 +431,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0357f5b807f8c49428b4d9017c9e84da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  rb: {fileID: 6792666296023754236}
-  collide: {fileID: 3024852527905607282}
+  currentHealth: 0
+  maxHealth: 3
+  dead: 0
+  animator: {fileID: 5236486014957963637}
   agent: {fileID: 3366889917677314353}
-  enemyVision: {fileID: 6343654318392745286}
-  werewolfMove: {fileID: 1709622657439679856}
+  rb: {fileID: 6792666296023754236}
+  box: {fileID: 3024852527905607282}
+  SimpleWerewolfMove: {fileID: 1709622657439679856}
+  EnemyVision: {fileID: 6343654318392745286}
 --- !u!4 &8657960268633756432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1927701682742333844, guid: 12d23f5c0abe3224d80e8a0e981bee8d,

@@ -9,6 +9,7 @@ public class CameraSwitch : MonoBehaviour
     public GameObject To;
     public bool camOn = false;
     public int cameraNumber;
+    
     void Start()
     {
         cameraNumber = 1;
@@ -21,6 +22,7 @@ public class CameraSwitch : MonoBehaviour
         {
             To.SetActive(true);
             From.SetActive(false);
+            
         }
     }
 }

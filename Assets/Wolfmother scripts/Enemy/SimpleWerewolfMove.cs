@@ -13,6 +13,8 @@ public class SimpleWerewolfMove : MonoBehaviour
     public float attackCooldown;
     public int damage = 1;
     public PlayerHealth player;
+    public EnemyHealth health;
+    public Animator animator;
 
     void Start()
     {
@@ -22,19 +24,20 @@ public class SimpleWerewolfMove : MonoBehaviour
 
     void Update()
     {
-        if (vision.playerSpotted == true && vision.playerInAttackRange == false)
+        if (vision.playerSpotted == true && vision.playerInAttackRange == false && health.dead == false)
         {
             agent.SetDestination(destination.transform.position);
-            GetComponent<Animator>().SetBool("IsMoving", true);
+            animator.SetBool("IsMoving", true);
         }
-        else if (vision.playerSpotted == false)
-        {
-            GetComponent<Animator>().SetBool("IsMoving", false);
-        }
-        else if (vision.playerInAttackRange == true)
+        else if (vision.playerSpotted == false && health.dead == false)
         {
             agent.SetDestination(werewolf.transform.position);
-            GetComponent<Animator>().SetTrigger("Attack");
+            animator.SetBool("IsMoving", false);
+        }
+        else if (vision.playerInAttackRange == true && health.dead == false)
+        {
+            agent.SetDestination(werewolf.transform.position);
+            animator.SetTrigger("Attack");
         }
         
         

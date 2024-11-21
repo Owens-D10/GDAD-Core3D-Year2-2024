@@ -15,6 +15,7 @@ public class BookshelfPrompts : MonoBehaviour
     public GameObject itemCamera;
     public GameObject player;
     public GameObject werewolf;
+    public GameObject BookshelfCamera;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -33,7 +34,7 @@ public class BookshelfPrompts : MonoBehaviour
 
     void Update()
     {
-        if (inRange == true && Input.GetButtonUp("ActionButton") && WeaponMechanics.isAiming == false && playerStatus.hasBook == false && dialogueShowing == false)
+        if (inRange == true && Input.GetButtonDown("ActionButton") && WeaponMechanics.isAiming == false && playerStatus.hasBook == false && dialogueShowing == false)
         {
             dialogueBox.SetActive(true);
             Time.timeScale = 0;
@@ -42,7 +43,7 @@ public class BookshelfPrompts : MonoBehaviour
             player.SetActive(false);
         }
 
-        else if (inRange == true && Input.GetButtonUp("ActionButton") && WeaponMechanics.isAiming == false && playerStatus.hasBook == true)
+        else if (inRange == true && Input.GetButtonDown("ActionButton") && WeaponMechanics.isAiming == false && playerStatus.hasBook == true)
         {
             promptBox.SetActive(true);
             Time.timeScale = 0;
@@ -68,6 +69,8 @@ public class BookshelfPrompts : MonoBehaviour
         keyBook.SetActive(true);
         inRange = false;
         bookshelf.GetComponent<Animator>().Play("bookshelf_move");
+        BookshelfCamera.SetActive(true);
+        itemCamera.SetActive(false);
         
         
         
@@ -78,6 +81,7 @@ public class BookshelfPrompts : MonoBehaviour
 
         HidePrompt();
         SetActives();
+        itemCamera.SetActive(false);
     }
 
     private void HidePrompt()
@@ -96,7 +100,7 @@ public class BookshelfPrompts : MonoBehaviour
 
     void SetActives()
     {
-        itemCamera.SetActive(false);
+        BookshelfCamera.SetActive(false);
         player.SetActive(true);
         werewolf.SetActive(true);
     }

@@ -16,6 +16,7 @@ public class AmmoPrompt : MonoBehaviour
     public GameObject itemGlint;
     public GameObject itemCamera;
     public GameObject player;
+    public AudioSource itemPickup;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -52,6 +53,7 @@ public class AmmoPrompt : MonoBehaviour
         Hide();
         itemCamera.SetActive(false);
         player.SetActive(true);
+        itemPickup.Play();
     }
 
     public void NoButton()

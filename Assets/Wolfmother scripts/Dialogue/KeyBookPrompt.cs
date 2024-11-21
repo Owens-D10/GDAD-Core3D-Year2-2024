@@ -22,6 +22,7 @@ public class KeyBookPrompt : MonoBehaviour
     public GameObject itemGlint;
     public GameObject itemCamera;
     public GameObject player;
+    public AudioSource itemPickup;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -61,6 +62,8 @@ public class KeyBookPrompt : MonoBehaviour
         inRange = false;
         itemCamera.SetActive(false);
         player.SetActive(true);
+        itemPickup.Play();
+
     }
 
     public void NoButton()

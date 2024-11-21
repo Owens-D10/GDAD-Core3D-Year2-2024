@@ -7,6 +7,14 @@ public class EnemyHealth : MonoBehaviour, IDamagable
 {
     public int currentHealth;
     public int maxHealth = 3;
+    public bool dead;
+    public Animator animator;
+    public NavMeshAgent agent;
+    public Rigidbody rb;
+    public BoxCollider box;
+    public SimpleWerewolfMove SimpleWerewolfMove;
+    public EnemyVision EnemyVision;
+    
 
     void Start()
     {
@@ -26,8 +34,28 @@ public class EnemyHealth : MonoBehaviour, IDamagable
         }
     }
 
+    void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
     void Die()
     {
-        GetComponent<Animator>().SetBool("IsDead", true);
+        animator.SetTrigger("Dying");
+        dead = true;
+        rb.useGravity = false;
+        box.enabled = false;
+        agent.enabled = false;
+        SimpleWerewolfMove.enabled = false;
+        EnemyVision.enabled = false;
+
+        
+    }
+    void FinishDeath()
+    {
+        animator.ResetTrigger("Dying");
     }
 }

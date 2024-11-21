@@ -69,6 +69,7 @@ public class WeaponMechanics : MonoBehaviour
 
     IEnumerator FiringWeapon()
     {
+        gunshot.pitch = UnityEngine.Random.Range(1f, 1.5f);
         gunshot.Play();
         GetComponent<Animator>().SetTrigger("Shoot");
         ammoCount -= 1;
@@ -78,6 +79,7 @@ public class WeaponMechanics : MonoBehaviour
 
     IEnumerator GunClick()
     {
+        gunClick.pitch = UnityEngine.Random.Range(1f, 1.5f);
         gunClick.Play();
         yield return new WaitForSeconds(fireRate);
         isFiring = false;

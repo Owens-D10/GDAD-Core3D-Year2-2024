@@ -17,6 +17,7 @@ public class TankControls : MonoBehaviour
     public float runningSpeed = 7f;
     public float movementSpeed;
     public PlayerStatus playerStatus;
+    public AudioSource footstep;
 
     // Update is called once per frame
     private void Start()
@@ -56,6 +57,12 @@ public class TankControls : MonoBehaviour
             }
         }
 
+    }
+
+    void Footstep()
+    {
+        footstep.pitch = UnityEngine.Random.Range(1f, 1.5f);
+        footstep.Play();
     }
 
 
