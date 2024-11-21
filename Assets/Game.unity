@@ -13053,7 +13053,7 @@ PrefabInstance:
         type: 3}
       propertyPath: destination
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1362957167}
     - target: {fileID: 7308616470255543663, guid: 6902aebc9c70dde4db5112e4afa7b66c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14036,7 +14036,7 @@ PrefabInstance:
         type: 3}
       propertyPath: destination
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1362957167}
     - target: {fileID: 7308616470255543663, guid: 6902aebc9c70dde4db5112e4afa7b66c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18551,7 +18551,7 @@ PrefabInstance:
         type: 3}
       propertyPath: destination
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1362957167}
     - target: {fileID: 6343654318392745286, guid: 6902aebc9c70dde4db5112e4afa7b66c,
         type: 3}
       propertyPath: player
@@ -24228,8 +24228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91930e038f37ec43a9e37b0902d122f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponMechanics: {fileID: 0}
-  dialogueBox: {fileID: 1362957167}
+  weaponMechanics: {fileID: 1362957169}
+  dialogueBox: {fileID: 1135048136}
   ammoBox: {fileID: 1837017264}
   inRange: 0
   itemGlint: {fileID: 680392481}
@@ -25129,6 +25129,11 @@ PrefabInstance:
     - target: {fileID: 2049513525874214215, guid: 030c5570ba24ef943a0396a495ba27be,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2341163803208443506, guid: 030c5570ba24ef943a0396a495ba27be,
+        type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

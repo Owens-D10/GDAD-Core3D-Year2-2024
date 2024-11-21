@@ -33,6 +33,7 @@ public class SimpleWerewolfMove : MonoBehaviour
         }
         else if (vision.playerInAttackRange == true)
         {
+            agent.SetDestination(werewolf.transform.position);
             GetComponent<Animator>().SetTrigger("Attack");
         }
         

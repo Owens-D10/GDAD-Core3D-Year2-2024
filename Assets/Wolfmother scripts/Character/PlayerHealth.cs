@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     void Die()
     {
+        
         GetComponent<Animator>().SetBool("IsDead", true);
     }
 }
