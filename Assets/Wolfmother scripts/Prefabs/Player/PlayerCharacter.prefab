@@ -845,6 +845,7 @@ MonoBehaviour:
   runningSpeed: 7
   movementSpeed: 0
   playerStatus: {fileID: 684266029860174686}
+  footstep: {fileID: 0}
 --- !u!65 &2341163803208443506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -974,7 +975,7 @@ MonoBehaviour:
   bulletSpawnPoint: {fileID: 8618561528265318108}
   bulletPrefab: {fileID: 4955805646490096651, guid: c8a15b438b2e3e742a1ff94447c89499,
     type: 3}
-  bulletSpeed: 1000
+  bulletSpeed: 10000
   ammoCount: 10
   gunClick: {fileID: 5537763284987125210}
   ammoGain: 5

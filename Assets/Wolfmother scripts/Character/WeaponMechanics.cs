@@ -22,10 +22,13 @@ public class WeaponMechanics : MonoBehaviour
     public float range;
     public int damage = 1;
     public Transform player;
-    
+
+    [SerializeField] LayerMask target;
     // Update is called once per frame
     void Update()
     {
+
+        Shoot();
         if (Input.GetButtonDown("Aim") && playerStatus.isPaused == false)
         {
             isAiming = true;
@@ -52,7 +55,8 @@ public class WeaponMechanics : MonoBehaviour
             {
                 isFiring = true;
                 Shoot();
-                
+                /*var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+                bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;*/
                 StartCoroutine(FiringWeapon());
             }
             if(Input.GetButton("ActionButton") &&isFiring == false && ammoCount == 0)
@@ -92,14 +96,15 @@ public class WeaponMechanics : MonoBehaviour
 
     public void Shoot()
     {
-        RaycastHit hit;
-        if(Physics.Raycast(bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.forward, out hit, range))
+        if(Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, range))
         {
-            EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
-            if (enemy  != null)
-            {
-                enemy.TakeDamage(damage);
-            }
+            Debug.Log("Hit Enemy");
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);   
+        }
+        else
+        {
+            Debug.Log("Hit Nothing");
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.green);
         }
         
     }

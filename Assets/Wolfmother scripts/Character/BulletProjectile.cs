@@ -5,12 +5,24 @@ using UnityEngine;
 public class BulletProjectile : MonoBehaviour
 {
 
-    public float life = 0.5f;
+    
     public static int damage = 1;
-    private void Awake()
+    EnemyHealth enemy;
+
+    private void Start()
     {
-        Destroy(gameObject, life);
+        enemy = GetComponent<EnemyHealth>();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        if (other.tag == "Enemy")
+        {
+            enemy.TakeDamage(damage);
+        }
+        Destroy(gameObject);
     }
 
+    
 
 }
