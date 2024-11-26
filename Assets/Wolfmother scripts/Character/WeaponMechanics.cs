@@ -56,8 +56,6 @@ public class WeaponMechanics : MonoBehaviour
             {
                 isFiring = true;
                 Shoot();
-                /*var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-                bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;*/
                 StartCoroutine(FiringWeapon());
             }
             if(Input.GetButton("ActionButton") &&isFiring == false && ammoCount == 0)
@@ -72,6 +70,7 @@ public class WeaponMechanics : MonoBehaviour
 
     }
 
+    // 
     IEnumerator FiringWeapon()
     {
         gunshot.pitch = UnityEngine.Random.Range(1f, 1.5f);
@@ -82,6 +81,7 @@ public class WeaponMechanics : MonoBehaviour
         isFiring = false;
     }
 
+    // Plays cliking sound effect to indicate no ammo
     IEnumerator GunClick()
     {
         gunClick.pitch = UnityEngine.Random.Range(1f, 1.5f);
@@ -90,11 +90,13 @@ public class WeaponMechanics : MonoBehaviour
         isFiring = false;
     }
 
+
     public void AmmoGain()
     {
         ammoCount += ammoGain;
     }
 
+    // Shoot Raycast Method
     public void Shoot()
     {
         RaycastHit hit;

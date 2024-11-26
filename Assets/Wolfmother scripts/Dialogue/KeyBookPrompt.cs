@@ -84,7 +84,7 @@ public class KeyBookPrompt : MonoBehaviour
 
     void BreakWindow()
     {
-        windowBreak.Play();
+        
         window.SetActive(false);
         brokenWindow.SetActive(true);
         wolf1.SetActive(true);
