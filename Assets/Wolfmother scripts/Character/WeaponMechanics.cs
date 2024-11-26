@@ -24,11 +24,12 @@ public class WeaponMechanics : MonoBehaviour
     public Transform player;
 
     [SerializeField] LayerMask target;
+    [SerializeField] LayerMask obstruction;
     // Update is called once per frame
     void Update()
     {
 
-        Shoot();
+        
         if (Input.GetButtonDown("Aim") && playerStatus.isPaused == false)
         {
             isAiming = true;
@@ -96,15 +97,17 @@ public class WeaponMechanics : MonoBehaviour
 
     public void Shoot()
     {
-        if(Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, range))
+        RaycastHit hit;
+        if(Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out hit, range, target))
         {
             Debug.Log("Hit Enemy");
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);   
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
+            hit.collider.gameObject.GetComponent<EnemyHealth>()?.TakeDamage(damage);
         }
-        else
+        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, obstruction))
         {
             Debug.Log("Hit Nothing");
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * range, Color.green);
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
         }
         
     }
