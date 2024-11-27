@@ -16,6 +16,7 @@ public class BookshelfPrompts : MonoBehaviour
     public GameObject player;
     public GameObject werewolf;
     public GameObject BookshelfCamera;
+    public AudioSource moveSfx;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
@@ -71,6 +72,7 @@ public class BookshelfPrompts : MonoBehaviour
         bookshelf.GetComponent<Animator>().Play("bookshelf_move");
         BookshelfCamera.SetActive(true);
         itemCamera.SetActive(false);
+        moveSfx.Play();
         
         
         

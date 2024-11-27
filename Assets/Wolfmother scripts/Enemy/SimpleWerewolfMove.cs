@@ -45,7 +45,11 @@ public class SimpleWerewolfMove : MonoBehaviour
     
     void Damage()
     {
-        player.TakeDamage(damage);
+        if (vision.playerInAttackRange == true)
+        {
+            player.TakeDamage(damage);
+        }
+        animator.ResetTrigger("Attack");
     }
     
     
