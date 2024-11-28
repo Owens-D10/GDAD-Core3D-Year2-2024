@@ -7,7 +7,7 @@ using UnityEngine.Assertions.Must;
 public class SimpleWerewolfMove : MonoBehaviour
 {
     public GameObject destination;
-    NavMeshAgent agent;
+    public NavMeshAgent agent;
     public EnemyVision vision;
     public GameObject werewolf;
     public float attackCooldown;
@@ -49,7 +49,11 @@ public class SimpleWerewolfMove : MonoBehaviour
         {
             player.TakeDamage(damage);
         }
-        animator.ResetTrigger("Attack");
+    }
+
+    void ResetAttack()
+    {
+        animator.SetTrigger("Attack");
     }
     
     

@@ -20,6 +20,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        GetComponent<Animator>().SetTrigger("TakeDamage");
         if (currentHealth <= 0)
         {
             Die();
@@ -30,5 +31,10 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     {
         
         GetComponent<Animator>().SetBool("IsDead", true);
+    }
+
+    void ResetTakeDamage()
+    {
+        GetComponent<Animator>().ResetTrigger("TakeDamage");
     }
 }

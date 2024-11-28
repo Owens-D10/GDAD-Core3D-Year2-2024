@@ -725,12 +725,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f38932888376eb1469f428cd0743a1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {fileID: 0}
+  destination: {fileID: 1673796575193145341, guid: 030c5570ba24ef943a0396a495ba27be,
+    type: 3}
+  agent: {fileID: 1116353057361666739}
   vision: {fileID: 6735649938397301632}
   werewolf: {fileID: 7314069480997238863}
   attackCooldown: 0
   damage: 1
-  player: {fileID: 0}
+  player: {fileID: -3947590722554440061, guid: 030c5570ba24ef943a0396a495ba27be, type: 3}
   health: {fileID: 7648760974023860057}
   animator: {fileID: 3900573672363179807}
 --- !u!65 &1273372194993680942
@@ -843,12 +845,6 @@ MonoBehaviour:
   currentHealth: 3
   maxHealth: 3
   dead: 0
-  animator: {fileID: 3900573672363179807}
-  agent: {fileID: 1116353057361666739}
-  rb: {fileID: 3072178945306732968}
-  box: {fileID: 1273372194993680942}
-  SimpleWerewolfMove: {fileID: 1296976192352030227}
-  EnemyVision: {fileID: 6735649938397301632}
 --- !u!1 &7860065296549343791
 GameObject:
   m_ObjectHideFlags: 0
