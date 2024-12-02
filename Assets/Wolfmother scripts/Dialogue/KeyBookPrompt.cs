@@ -49,6 +49,8 @@ public class KeyBookPrompt : MonoBehaviour
             itemCamera.SetActive(true);
             itemGlint.SetActive(false);
             player.SetActive(false);
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
     }
 
@@ -63,6 +65,8 @@ public class KeyBookPrompt : MonoBehaviour
         itemCamera.SetActive(false);
         player.SetActive(true);
         itemPickup.Play();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
     }
 
@@ -73,6 +77,8 @@ public class KeyBookPrompt : MonoBehaviour
         itemCamera.SetActive(false);
         itemGlint.SetActive(true); 
         player.SetActive(true);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Hide()

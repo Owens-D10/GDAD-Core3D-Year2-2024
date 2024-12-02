@@ -895,6 +895,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3744493413030600529}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: af7eda1575264fb4b8f2565f3969de4c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 454849722383283460}
     - targetCorrespondingSourceObject: {fileID: 1381983217803703944, guid: af7eda1575264fb4b8f2565f3969de4c,
         type: 3}
       insertIndex: -1
@@ -1151,6 +1155,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 7
   heavyBreathing: {fileID: 6046619086738492359}
+  bloodEffect: {fileID: 4768838321134680}
 --- !u!4 &1865704940283287594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 153047680869530246, guid: af7eda1575264fb4b8f2565f3969de4c,
@@ -1361,4 +1366,109 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1c0debfb3ad8ddc47bd2816e28797777,
     type: 3}
   m_PrefabInstance: {fileID: 3256490064733338079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6840089404674574373
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2049513525874214215}
+    m_Modifications:
+    - target: {fileID: 6257010610051587997, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6257010610051587997, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: autoRandomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6844363302237492349, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6844363302237492349, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: autoRandomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061524969867438181, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657584943748552572, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_Name
+      value: Blood_PS
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8790041093dae94194e859cc520a171, type: 3}
+--- !u!198 &4768838321134680 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6844363302237492349, guid: e8790041093dae94194e859cc520a171,
+    type: 3}
+  m_PrefabInstance: {fileID: 6840089404674574373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &454849722383283460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+    type: 3}
+  m_PrefabInstance: {fileID: 6840089404674574373}
   m_PrefabAsset: {fileID: 0}

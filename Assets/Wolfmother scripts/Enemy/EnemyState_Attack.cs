@@ -15,6 +15,7 @@ public class EnemyState_Attack : IEnemyState
         Debug.Log("Entering Patrol Attack");
         enemy.agent.SetDestination(enemy.werewolf.transform.position);
         enemy.animator.SetTrigger("Attack");
+        enemy.canAttack = false;
         
     }
 
@@ -26,13 +27,22 @@ public class EnemyState_Attack : IEnemyState
             enemy.SetState(new EnemyState_Chase());
         }
         
-        if(enemy.vision.playerSpotted == false && enemy.dead == false)
+        if(enemy.vision.playerSpotted == false || enemy.vision.playerInAttackRange == true && enemy.dead == false)
         {
             enemy.SetState(new EnemyState_Idle());
             
         }
+        else if (enemy.vision.playerInAttackRange == true && enemy.dead == false && enemy.canAttack == false)
+        {
+            enemy.SetState(new EnemyState_Idle());
+        }
 
-        
+        if (enemy.vision.playerInAttackRange == true && enemy.dead == false && enemy.canAttack == true)
+        {
+            enemy.SetState(new EnemyState_Attack());
+        }
+
+
     }
 
     public void Exit(Enemy enemy)

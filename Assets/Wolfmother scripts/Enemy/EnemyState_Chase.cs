@@ -22,6 +22,10 @@ public class EnemyState_Chase : IEnemyState
         {
             enemy.SetState(new EnemyState_Idle());
         }
+        else if (enemy.vision.playerInAttackRange == true && enemy.dead == false && enemy.canAttack == false)
+        {
+            enemy.SetState(new EnemyState_Idle());
+        }
         if (enemy.vision.playerInAttackRange == true && enemy.dead == false && enemy.canAttack == true)
         {
             enemy.SetState(new EnemyState_Attack());

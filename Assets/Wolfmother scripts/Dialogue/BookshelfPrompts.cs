@@ -51,6 +51,8 @@ public class BookshelfPrompts : MonoBehaviour
             itemCamera.SetActive(true);
             player.SetActive(false);
             werewolf.SetActive(false);
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
 
         else if(dialogueShowing == true && Input.GetButtonDown("ActionButton"))
@@ -73,9 +75,11 @@ public class BookshelfPrompts : MonoBehaviour
         BookshelfCamera.SetActive(true);
         itemCamera.SetActive(false);
         moveSfx.Play();
-        
-        
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+
+
     }
 
     public void NoButton()
@@ -84,6 +88,8 @@ public class BookshelfPrompts : MonoBehaviour
         HidePrompt();
         SetActives();
         itemCamera.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void HidePrompt()

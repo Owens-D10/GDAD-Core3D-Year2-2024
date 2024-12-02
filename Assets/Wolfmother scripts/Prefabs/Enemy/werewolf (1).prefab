@@ -296,7 +296,7 @@ AudioSource:
   m_GameObject: {fileID: 2763630616278688513}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 7842468050713168027, guid: 3c08029f3a334d8468cd0ea11728e603,
+  OutputAudioMixerGroup: {fileID: 5885404994162386747, guid: 3c08029f3a334d8468cd0ea11728e603,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: e73ed8387097a2247ad5aded7166428e, type: 3}
   m_PlayOnAwake: 0
@@ -780,6 +780,7 @@ Transform:
   - {fileID: 1351286876351628183}
   - {fileID: 3980991486540265300}
   - {fileID: 4511220140414847955}
+  - {fileID: 7669747995122149941}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 94.24, z: 0}
 --- !u!114 &2580107913515317644
@@ -900,7 +901,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 3.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -924,7 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68908164319c8e45a098d7a81702969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 18.05
+  radius: 40
   angle: 61.3
   player: {fileID: 0}
   targetMask:
@@ -952,19 +953,21 @@ MonoBehaviour:
   target: {fileID: 0}
   dieEffectPrefab: {fileID: 0}
   currentHealth: 0
-  maxHealth: 3
+  maxHealth: 4
   dead: 0
   animator: {fileID: 3900573672363179807}
   rb: {fileID: 3072178945306732968}
   box: {fileID: 1273372194993680942}
   vision: {fileID: 6735649938397301632}
   deathHowl: {fileID: 51737860261155635}
+  bloodEffect: {fileID: 7795565445407130473}
   destination: {fileID: 0}
   agent: {fileID: 1116353057361666739}
   werewolf: {fileID: 7314069480997238863}
-  attackCooldown: 0
+  attackCooldown: 1.5
   player: {fileID: 0}
   canAttack: 0
+  damage: 1
 --- !u!1 &7860065296549343791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,3 +1127,98 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7716043679581647803}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3662404311911536404
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7389418764866353743}
+    m_Modifications:
+    - target: {fileID: 6257010610051587997, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6844363302237492349, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7061524969867438181, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7657584943748552572, guid: e8790041093dae94194e859cc520a171,
+        type: 3}
+      propertyPath: m_Name
+      value: Blood_PS
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8790041093dae94194e859cc520a171, type: 3}
+--- !u!4 &7669747995122149941 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6386969016524455201, guid: e8790041093dae94194e859cc520a171,
+    type: 3}
+  m_PrefabInstance: {fileID: 3662404311911536404}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7795565445407130473 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6844363302237492349, guid: e8790041093dae94194e859cc520a171,
+    type: 3}
+  m_PrefabInstance: {fileID: 3662404311911536404}
+  m_PrefabAsset: {fileID: 0}

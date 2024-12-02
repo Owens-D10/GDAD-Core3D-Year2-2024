@@ -36,6 +36,7 @@ public class DialogueScript : MonoBehaviour
             dialogueShowing = true;
             itemCamera.SetActive(true);
             player.SetActive(false);
+
         }
 
 

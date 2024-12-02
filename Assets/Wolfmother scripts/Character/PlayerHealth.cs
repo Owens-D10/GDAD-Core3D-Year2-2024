@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public int currentHealth;
     public int maxHealth = 7;
     public AudioSource heavyBreathing;
+    public ParticleSystem bloodEffect;
 
     void Start()
     {
@@ -18,12 +19,9 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     {
         if (currentHealth <= 3)
         {
-            heavyBreathing.Play();
+            heavyBreathing.enabled = true;
         }
-        else if (currentHealth > 3 || currentHealth <= 0) 
-        {
-            heavyBreathing.Stop();
-        }
+        
     }
     public void ShowHitEffect()
     {
@@ -34,6 +32,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     {
         currentHealth -= damage;
         GetComponent<Animator>().SetTrigger("TakeDamage");
+        bloodEffect.Play();
         if (currentHealth <= 0)
         {
             Die();

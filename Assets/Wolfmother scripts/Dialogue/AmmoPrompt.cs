@@ -42,6 +42,8 @@ public class AmmoPrompt : MonoBehaviour
             itemGlint.SetActive(false);
             itemCamera.SetActive(true);
             player.SetActive(false);
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
         
     }
@@ -54,6 +56,8 @@ public class AmmoPrompt : MonoBehaviour
         itemCamera.SetActive(false);
         player.SetActive(true);
         itemPickup.Play();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void NoButton()
@@ -63,6 +67,8 @@ public class AmmoPrompt : MonoBehaviour
         itemGlint.SetActive(true);
         itemCamera.SetActive(false);
         player.SetActive(true);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Hide()

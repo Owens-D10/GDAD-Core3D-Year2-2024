@@ -22,7 +22,8 @@ public class TankControls : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     void Update()
     {

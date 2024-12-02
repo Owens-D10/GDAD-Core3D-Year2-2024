@@ -26,6 +26,8 @@ public class WolfsbanePrompt : MonoBehaviour
         {
             dialogueBox.SetActive(true);
             Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
     }
 
@@ -33,13 +35,17 @@ public class WolfsbanePrompt : MonoBehaviour
     {
         
         Hide();
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        SceneManager.LoadScene("Game");
     }
 
     public void NoButton()
     {
 
         Hide();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Hide()

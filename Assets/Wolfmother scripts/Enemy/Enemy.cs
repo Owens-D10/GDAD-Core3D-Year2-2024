@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public BoxCollider box;
     public EnemyVision vision;
     public AudioSource deathHowl;
+    public ParticleSystem bloodEffect;
 
     public GameObject destination;
     public NavMeshAgent agent;
@@ -59,6 +60,7 @@ public class Enemy : MonoBehaviour, IDamagable
     {
         currentHealth -= damage;
         GetComponent<Animator>().SetTrigger("TakeDamage");
+        bloodEffect.Play();
         if (currentHealth <= 0)
         {
             Die();
