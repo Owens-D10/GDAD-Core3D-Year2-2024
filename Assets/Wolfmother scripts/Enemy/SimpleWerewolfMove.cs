@@ -38,6 +38,7 @@ public class SimpleWerewolfMove : MonoBehaviour
         {
             agent.SetDestination(werewolf.transform.position);
             animator.SetTrigger("Attack");
+            
         }
         
         

@@ -104,7 +104,7 @@ public class WeaponMechanics : MonoBehaviour
         {
             Debug.Log("Hit Enemy");
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
-            hit.collider.gameObject.GetComponent<EnemyHealth>()?.TakeDamage(damage);
+            hit.collider.gameObject.GetComponent<Enemy>()?.TakeDamage(damage);
         }
         else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, obstruction))
         {

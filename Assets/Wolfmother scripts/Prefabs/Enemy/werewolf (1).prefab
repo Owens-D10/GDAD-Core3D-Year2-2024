@@ -752,12 +752,11 @@ GameObject:
   - component: {fileID: 7389418764866353743}
   - component: {fileID: 2580107913515317644}
   - component: {fileID: 3900573672363179807}
-  - component: {fileID: 1296976192352030227}
   - component: {fileID: 1273372194993680942}
   - component: {fileID: 3072178945306732968}
   - component: {fileID: 1116353057361666739}
   - component: {fileID: 6735649938397301632}
-  - component: {fileID: 7648760974023860057}
+  - component: {fileID: 4274730126493278067}
   m_Layer: 8
   m_Name: werewolf (1)
   m_TagString: Enemy
@@ -843,28 +842,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1296976192352030227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7314069480997238863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38932888376eb1469f428cd0743a1a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destination: {fileID: 1673796575193145341, guid: 030c5570ba24ef943a0396a495ba27be,
-    type: 3}
-  agent: {fileID: 1116353057361666739}
-  vision: {fileID: 6735649938397301632}
-  werewolf: {fileID: 7314069480997238863}
-  attackCooldown: 0
-  damage: 1
-  player: {fileID: -3947590722554440061, guid: 030c5570ba24ef943a0396a495ba27be, type: 3}
-  health: {fileID: 7648760974023860057}
-  animator: {fileID: 3900573672363179807}
 --- !u!65 &1273372194993680942
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -960,7 +937,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   attackRadius: 5.72
   attackAngle: 122.9
---- !u!114 &7648760974023860057
+--- !u!114 &4274730126493278067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -969,19 +946,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 7314069480997238863}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0357f5b807f8c49428b4d9017c9e84da, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b5f0d4461b2eca42977f14b3308174a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
+  target: {fileID: 0}
+  dieEffectPrefab: {fileID: 0}
+  currentHealth: 0
   maxHealth: 3
   dead: 0
   animator: {fileID: 3900573672363179807}
-  agent: {fileID: 1116353057361666739}
   rb: {fileID: 3072178945306732968}
   box: {fileID: 1273372194993680942}
-  SimpleWerewolfMove: {fileID: 1296976192352030227}
-  EnemyVision: {fileID: 6735649938397301632}
+  vision: {fileID: 6735649938397301632}
   deathHowl: {fileID: 51737860261155635}
+  destination: {fileID: 0}
+  agent: {fileID: 1116353057361666739}
+  werewolf: {fileID: 7314069480997238863}
+  attackCooldown: 0
+  player: {fileID: 0}
+  canAttack: 0
 --- !u!1 &7860065296549343791
 GameObject:
   m_ObjectHideFlags: 0

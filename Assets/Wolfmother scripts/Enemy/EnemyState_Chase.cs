@@ -1,30 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyState_Chase : IEnemyState
 {
+
+    
     public void Enter(Enemy enemy)
     {
         Debug.Log("Entering Chase State");
-        // Additional setup if needed (e.g., animation)
+        enemy.agent.SetDestination(enemy.destination.transform.position);
+        enemy.animator.SetBool("IsMoving", true);
     }
 
     public void Update(Enemy enemy)
     {
-        // Move towards the player
-        enemy.transform.position = Vector3.MoveTowards(enemy.transform.position, enemy.target.position, enemy.speed * Time.deltaTime);
 
         // Transition back to Idle if player is out of range
-        if (Vector3.Distance(enemy.transform.position, enemy.target.position) > enemy.chaseRange)
+        if (enemy.vision.playerSpotted == false && enemy.dead == false)
         {
             enemy.SetState(new EnemyState_Idle());
+        }
+        if (enemy.vision.playerInAttackRange == true && enemy.dead == false && enemy.canAttack == true)
+        {
+            enemy.SetState(new EnemyState_Attack());
         }
     }
 
     public void Exit(Enemy enemy)
     {
         Debug.Log("Exiting Chase State");
-        // Clean up if needed
+        
     }
 }
