@@ -15,7 +15,6 @@ public class EnemyState_Attack : IEnemyState
         Debug.Log("Entering Patrol Attack");
         enemy.agent.SetDestination(enemy.werewolf.transform.position);
         enemy.animator.SetTrigger("Attack");
-        enemy.canAttack = false;
         
     }
 

@@ -128,7 +128,7 @@ public class Enemy : MonoBehaviour, IDamagable
         return "No State";
     }
 
-    public IEnumerator AttackCooldown()
+    public IEnumerator AttackCooldown() // Cooldown for werewolf attacking animation
     {
         canAttack = false;
 
@@ -137,7 +137,7 @@ public class Enemy : MonoBehaviour, IDamagable
         canAttack = true;
     }
 
-    void Damage()
+    void Damage() // Method called in werewolf attack animation to damage the player
     {
         if (vision.playerInAttackRange == true)
         {
@@ -145,7 +145,7 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
 
-    void RepeatAttack()
+    void RepeatAttack() // Method called in attack animation to repeat attack if player is still in attack range
     {
         StartCoroutine(AttackCooldown());
     }
