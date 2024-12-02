@@ -8,12 +8,13 @@ public class EnemyHealth : MonoBehaviour, IDamagable
     public int currentHealth;
     public int maxHealth = 3;
     public bool dead;
-    Animator animator;
-    NavMeshAgent agent;
-    Rigidbody rb;
-    BoxCollider box;
-    SimpleWerewolfMove SimpleWerewolfMove;
-    EnemyVision EnemyVision;
+    public Animator animator;
+    public NavMeshAgent agent;
+    public Rigidbody rb;
+    public BoxCollider box;
+    public SimpleWerewolfMove SimpleWerewolfMove;
+    public EnemyVision EnemyVision;
+    public AudioSource deathHowl;
     
 
     void Start()
@@ -32,6 +33,7 @@ public class EnemyHealth : MonoBehaviour, IDamagable
         if (currentHealth <= 0)
         {
             Die();
+            deathHowl.Play();
         }
     }
 
@@ -52,6 +54,7 @@ public class EnemyHealth : MonoBehaviour, IDamagable
         agent.enabled = false;
         SimpleWerewolfMove.enabled = false;
         EnemyVision.enabled = false;
+        
 
         
     }
