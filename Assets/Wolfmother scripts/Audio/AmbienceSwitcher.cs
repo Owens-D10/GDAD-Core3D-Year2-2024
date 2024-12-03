@@ -6,7 +6,7 @@ public class AmbienceSwitcher : MonoBehaviour
 {
     public AudioSource PreviousAmbience;
     public AudioSource NextAmbience;
-    public PlayerStatus player;
+    public Player player;
     public AudioSource NewPreviousAmbience;
     public AudioSource NewNextAmbience;
     private void OnTriggerEnter(Collider other)

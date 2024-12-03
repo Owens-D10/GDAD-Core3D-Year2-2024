@@ -931,11 +931,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af7eda1575264fb4b8f2565f3969de4c,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 684266029860174686}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: af7eda1575264fb4b8f2565f3969de4c,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -3947590722554440061}
+      addedObject: {fileID: 3049400633177938828}
   m_SourcePrefab: {fileID: 100100000, guid: af7eda1575264fb4b8f2565f3969de4c, type: 3}
 --- !u!4 &636738891861693476 stripped
 Transform:
@@ -981,7 +977,7 @@ MonoBehaviour:
   walkingSpeed: 4
   runningSpeed: 7
   movementSpeed: 0
-  playerStatus: {fileID: 684266029860174686}
+  playerStatus: {fileID: 3049400633177938828}
   footstep: {fileID: 0}
 --- !u!65 &2341163803208443506
 BoxCollider:
@@ -1116,17 +1112,17 @@ MonoBehaviour:
   ammoCount: 10
   gunClick: {fileID: 5537763284987125210}
   ammoGain: 5
-  playerStatus: {fileID: 684266029860174686}
+  playerStatus: {fileID: 3049400633177938828}
   range: 100
   damage: 1
   player: {fileID: 2049513525874214215}
   target:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   obstruction:
     serializedVersion: 2
-    m_Bits: 0
---- !u!114 &684266029860174686
+    m_Bits: 128
+--- !u!114 &3049400633177938828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1135,27 +1131,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1673796575193145341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1091a8f6ddc8bb344ac500fd5b64a68d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasBook: 0
-  isPaused: 0
---- !u!114 &-3947590722554440061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673796575193145341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07eece31ebdcfc747a05867383d0ff32, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fd14c80376b55a4aa98d6d1ba8093f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 7
   heavyBreathing: {fileID: 6046619086738492359}
   bloodEffect: {fileID: 4768838321134680}
+  hasBook: 0
+  isPaused: 0
 --- !u!4 &1865704940283287594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 153047680869530246, guid: af7eda1575264fb4b8f2565f3969de4c,

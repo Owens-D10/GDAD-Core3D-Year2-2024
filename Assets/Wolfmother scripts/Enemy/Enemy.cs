@@ -33,9 +33,10 @@ public class Enemy : MonoBehaviour, IDamagable
     public NavMeshAgent agent;
     public GameObject werewolf;
     public float attackCooldown = 1.5f;
-    public PlayerHealth player;
+    public Player player;
     public bool canAttack;
     public int damage = 1;
+    public AudioSource footstep;
     
     private void Start()
     {
@@ -68,12 +69,6 @@ public class Enemy : MonoBehaviour, IDamagable
         }
     }
 
-    private void OnEnable()
-    {
-        // Scale the enemy up from 0 to 1 over 1 second using DOTween for spawn animation
-        transform.localScale = Vector3.zero;
-        transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutBounce);
-    }
     
     private void Update()
     {
@@ -150,5 +145,14 @@ public class Enemy : MonoBehaviour, IDamagable
         StartCoroutine(AttackCooldown());
     }
 
+    void FootSteps()
+    {
+        footstep.pitch = UnityEngine.Random.Range(-0.5f, 0f);
+        footstep.Play();
+    }
 
+    void IsDead()
+    {
+        animator.SetBool("IsDead", true);
+    }
 }

@@ -13,7 +13,7 @@ public class AmmoPrompt : MonoBehaviour
     public GameObject dialogueBox;
     public GameObject ammoBox;
     public bool inRange = false;
-    public GameObject itemGlint;
+    public ParticleSystem itemGlint;
     public GameObject itemCamera;
     public GameObject player;
     public AudioSource itemPickup;
@@ -39,7 +39,7 @@ public class AmmoPrompt : MonoBehaviour
         {
             dialogueBox.SetActive(true);
             Time.timeScale = 0;
-            itemGlint.SetActive(false);
+            itemGlint.Clear();
             itemCamera.SetActive(true);
             player.SetActive(false);
             Cursor.lockState = CursorLockMode.Confined;
@@ -64,7 +64,7 @@ public class AmmoPrompt : MonoBehaviour
     {
 
         Hide();
-        itemGlint.SetActive(true);
+        itemGlint.Play();
         itemCamera.SetActive(false);
         player.SetActive(true);
         Cursor.visible = false;

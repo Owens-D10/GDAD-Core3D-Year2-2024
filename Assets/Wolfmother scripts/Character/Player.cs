@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, IDamagable
+public class Player : MonoBehaviour, IDamagable
 {
-
     public int currentHealth;
     public int maxHealth = 7;
     public AudioSource heavyBreathing;
     public ParticleSystem bloodEffect;
+
+    public bool hasBook = false;
+    public bool isPaused = false;
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         {
             heavyBreathing.enabled = true;
         }
-        
+
     }
     public void ShowHitEffect()
     {
@@ -41,7 +43,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     void Die()
     {
-        
+
         GetComponent<Animator>().SetBool("IsDead", true);
     }
 

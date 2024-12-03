@@ -7,14 +7,15 @@ public class BookshelfPrompts : MonoBehaviour
     public WeaponMechanics weaponMechanics;
     public GameObject dialogueBox;
     public GameObject keyBook;
-    public PlayerStatus playerStatus;
+    public Player playerStatus;
     public GameObject promptBox;
     public GameObject bookshelf;
     public bool inRange = false;
     public bool dialogueShowing = false;
     public GameObject itemCamera;
     public GameObject player;
-    public GameObject werewolf;
+    public GameObject werewolf1;
+    public GameObject werewolf2;
     public GameObject BookshelfCamera;
     public AudioSource moveSfx;
     private void OnTriggerEnter(Collider other)
@@ -50,7 +51,8 @@ public class BookshelfPrompts : MonoBehaviour
             Time.timeScale = 0;
             itemCamera.SetActive(true);
             player.SetActive(false);
-            werewolf.SetActive(false);
+            werewolf1.SetActive(false);
+            werewolf2.SetActive(false);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
@@ -110,6 +112,7 @@ public class BookshelfPrompts : MonoBehaviour
     {
         BookshelfCamera.SetActive(false);
         player.SetActive(true);
-        werewolf.SetActive(true);
+        werewolf1.SetActive(true);
+        werewolf2.SetActive(true);
     }
 }

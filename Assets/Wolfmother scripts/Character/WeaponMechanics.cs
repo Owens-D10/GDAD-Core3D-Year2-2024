@@ -7,21 +7,16 @@ public class WeaponMechanics : MonoBehaviour
 {
     public static bool isAiming = false;
     public GameObject Player;
-    public Animator playerAnimator;
     public float horizontalMove;
     public AudioSource gunshot;
     public bool isFiring;
     public float fireRate = 1f;
-    public Transform bulletSpawnPoint;
-    public GameObject bulletPrefab;
-    public float bulletSpeed = 10f;
     public int ammoCount = 10;
     public AudioSource gunClick;
     public int ammoGain = 5;
-    public PlayerStatus playerStatus;
+    public Player playerStatus;
     public float range;
     public int damage = 1;
-    public Transform player;
 
     [SerializeField] LayerMask target; // Layer mask for what can take damage from gun
     [SerializeField] LayerMask obstruction; // Layer mask for what obstructs gub
@@ -71,9 +66,9 @@ public class WeaponMechanics : MonoBehaviour
     }
 
     // 
-    void FiringWeapon() // plays gunchot sound effect and shooting animation. Also takes away from the ammo count
+    void FiringWeapon() // plays gunshot sound effect and shooting animation. Also takes away from the ammo count
     {
-        gunshot.pitch = UnityEngine.Random.Range(1f, 1.5f);
+        gunshot.pitch = UnityEngine.Random.Range(0.5f, 1f);
         gunshot.Play();
         GetComponent<Animator>().SetTrigger("Shoot");
         ammoCount -= 1;
@@ -83,7 +78,7 @@ public class WeaponMechanics : MonoBehaviour
     // Plays cliking sound effect to indicate no ammo
     IEnumerator GunClick() // plays gun click sound effect and starts gun cooldown
     {
-        gunClick.pitch = UnityEngine.Random.Range(1f, 1.5f);
+        gunClick.pitch = UnityEngine.Random.Range(0.5f, 1f);
         gunClick.Play();
         yield return new WaitForSeconds(fireRate);
         isFiring = false;
