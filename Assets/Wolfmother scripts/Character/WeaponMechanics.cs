@@ -22,10 +22,11 @@ public class WeaponMechanics : MonoBehaviour
     public float range;
     public int damage = 1;
     public Transform player;
+    public bool canShoot = true;
 
     [SerializeField] LayerMask target; // Layer mask for what can take damage from gun
     [SerializeField] LayerMask obstruction; // Layer mask for what obstructs gub
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
 
@@ -58,11 +59,13 @@ public class WeaponMechanics : MonoBehaviour
                 Shoot();
                 FiringWeapon();
             }
+            
             if(Input.GetButton("ActionButton") &&isFiring == false && ammoCount == 0)
             {
                 isFiring = true;
                 StartCoroutine(GunClick());
             }
+            
 
 
         }
@@ -73,7 +76,7 @@ public class WeaponMechanics : MonoBehaviour
     // 
     void FiringWeapon() // plays gunchot sound effect and shooting animation. Also takes away from the ammo count
     {
-        gunshot.pitch = UnityEngine.Random.Range(1f, 1.5f);
+        gunshot.pitch = UnityEngine.Random.Range(0.5f, 1f);
         gunshot.Play();
         GetComponent<Animator>().SetTrigger("Shoot");
         ammoCount -= 1;

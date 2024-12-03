@@ -9,7 +9,10 @@ public class WolfsbanePrompt : MonoBehaviour
     public WeaponMechanics weaponMechanics;
     public GameObject dialogueBox;
     public Scene game;
-    
+    public ParticleSystem itemGlint;
+    public GameObject itemCamera;
+    public GameObject player;
+
     public bool inRange = false;
 
     private void OnTriggerEnter(Collider other)
@@ -28,6 +31,9 @@ public class WolfsbanePrompt : MonoBehaviour
             Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
+            itemGlint.Clear();
+            itemCamera.SetActive(true);
+            player.SetActive(false);
         }
     }
 
@@ -38,6 +44,8 @@ public class WolfsbanePrompt : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene("Game");
+        itemCamera.SetActive(false);
+        player.SetActive(true);
     }
 
     public void NoButton()
@@ -46,6 +54,9 @@ public class WolfsbanePrompt : MonoBehaviour
         Hide();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        itemGlint.Play();
+        itemCamera.SetActive(false);
+        player.SetActive(true);
     }
 
     private void Hide()
