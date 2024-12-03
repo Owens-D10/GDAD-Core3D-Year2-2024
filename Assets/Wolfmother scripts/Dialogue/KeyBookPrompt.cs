@@ -17,9 +17,9 @@ public class KeyBookPrompt : MonoBehaviour
     public GameObject brokenWindow;
     public AudioSource windowBreak;
     public GameObject wolf1;
-    public Player playerStatus;
+    public PlayerStatus playerStatus;
     public bool inRange = false;
-    public ParticleSystem itemGlint;
+    public GameObject itemGlint;
     public GameObject itemCamera;
     public GameObject player;
     public AudioSource itemPickup;
@@ -47,7 +47,7 @@ public class KeyBookPrompt : MonoBehaviour
             dialogueBox.SetActive(true);
             Time.timeScale = 0;
             itemCamera.SetActive(true);
-            itemGlint.Clear();
+            itemGlint.SetActive(false);
             player.SetActive(false);
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
@@ -75,7 +75,7 @@ public class KeyBookPrompt : MonoBehaviour
 
         Hide();
         itemCamera.SetActive(false);
-        itemGlint.Play(); 
+        itemGlint.SetActive(true); 
         player.SetActive(true);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

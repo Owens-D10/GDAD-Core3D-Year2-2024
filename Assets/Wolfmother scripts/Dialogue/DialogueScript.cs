@@ -6,7 +6,7 @@ public class DialogueScript : MonoBehaviour
 {
     public WeaponMechanics weaponMechanics;
     public GameObject dialogueBox;
-    public Player playerStatus;
+    public PlayerStatus playerStatus;
     public bool inRange = false;
     public bool dialogueShowing = false;
     public GameObject itemCamera;

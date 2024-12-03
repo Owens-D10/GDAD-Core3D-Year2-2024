@@ -16,7 +16,7 @@ public class TankControls : MonoBehaviour
     public float walkingSpeed = 4f;
     public float runningSpeed = 7f;
     public float movementSpeed;
-    public Player playerStatus;
+    public PlayerStatus playerStatus;
     public AudioSource footstep;
 
     // Update is called once per frame

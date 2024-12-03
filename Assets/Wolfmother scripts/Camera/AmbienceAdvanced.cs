@@ -8,7 +8,7 @@ public class AmbienceAdvanced : MonoBehaviour
     public AudioSource To;
     public bool camOn = false;
     public int cameraNumber;
-    public Player status;
+    public PlayerStatus status;
 
 
 
