@@ -11,7 +11,7 @@ public class WeaponMechanics : MonoBehaviour
     public float horizontalMove;
     public AudioSource gunshot;
     public bool isFiring;
-    public float fireRate = 0.5f;
+    public float fireRate = 1f;
     public Transform bulletSpawnPoint;
     public GameObject bulletPrefab;
     public float bulletSpeed = 10f;
@@ -23,21 +23,21 @@ public class WeaponMechanics : MonoBehaviour
     public int damage = 1;
     public Transform player;
 
-    [SerializeField] LayerMask target;
-    [SerializeField] LayerMask obstruction;
+    [SerializeField] LayerMask target; // Layer mask for what can take damage from gun
+    [SerializeField] LayerMask obstruction; // Layer mask for what obstructs gub
     // Update is called once per frame
     void Update()
     {
 
         
-        if (Input.GetButtonDown("Aim") && playerStatus.isPaused == false)
+        if (Input.GetButtonDown("Aim") && playerStatus.isPaused == false) // starts aiming
         {
             isAiming = true;
             GetComponent<Animator>().SetBool("isAiming", true);
 
             
         }
-        else if(Input.GetButtonUp("Aim"))
+        else if(Input.GetButtonUp("Aim")) // stops aiming
         {
             isAiming = false;
             GetComponent<Animator>().SetBool("isAiming", false);
@@ -56,7 +56,7 @@ public class WeaponMechanics : MonoBehaviour
             {
                 isFiring = true;
                 Shoot();
-                StartCoroutine(FiringWeapon());
+                FiringWeapon();
             }
             if(Input.GetButton("ActionButton") &&isFiring == false && ammoCount == 0)
             {
@@ -71,27 +71,27 @@ public class WeaponMechanics : MonoBehaviour
     }
 
     // 
-    IEnumerator FiringWeapon()
+    void FiringWeapon() // plays gunchot sound effect and shooting animation. Also takes away from the ammo count
     {
         gunshot.pitch = UnityEngine.Random.Range(1f, 1.5f);
         gunshot.Play();
         GetComponent<Animator>().SetTrigger("Shoot");
         ammoCount -= 1;
-        yield return new WaitForSeconds(fireRate);
-        isFiring = false;
+        
     }
 
     // Plays cliking sound effect to indicate no ammo
-    IEnumerator GunClick()
+    IEnumerator GunClick() // plays gun click sound effect and starts gun cooldown
     {
         gunClick.pitch = UnityEngine.Random.Range(1f, 1.5f);
         gunClick.Play();
         yield return new WaitForSeconds(fireRate);
         isFiring = false;
+        
     }
 
 
-    public void AmmoGain()
+    public void AmmoGain() // adds to ammo count when ammo boxes are collected
     {
         ammoCount += ammoGain;
     }
@@ -100,18 +100,23 @@ public class WeaponMechanics : MonoBehaviour
     public void Shoot()
     {
         RaycastHit hit;
-        if(Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out hit, range, target))
+        if(Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out hit, range, target)) // Hits and deals damage to enemies
         {
             Debug.Log("Hit Enemy");
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.red);
             hit.collider.gameObject.GetComponent<Enemy>()?.TakeDamage(damage);
         }
-        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, obstruction))
+        else if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, range, obstruction)) // Hits obstructions such as walls
         {
             Debug.Log("Hit Nothing");
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.green);
         }
         
+    }
+
+    void FinishedFiring() // Method is called by shooting animation for the gun's cooldown
+    {
+        isFiring = false;
     }
 
     
