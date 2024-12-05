@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public PlayerHealth player;
     public bool canAttack;
     public int damage = 1;
+    public AudioSource footstep;
     
     private void Start()
     {
@@ -150,5 +151,10 @@ public class Enemy : MonoBehaviour, IDamagable
         StartCoroutine(AttackCooldown());
     }
 
+    void EnemyFootstep()
+    {
+        footstep.pitch = UnityEngine.Random.Range(-0.5f, 0f);
+        footstep.Play();
+    }
 
 }
