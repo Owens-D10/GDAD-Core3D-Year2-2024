@@ -41,11 +41,9 @@ public class WolfsbanePrompt : MonoBehaviour
     {
         
         Hide();
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        SceneManager.LoadScene("Game");
-        itemCamera.SetActive(false);
-        player.SetActive(true);
+        
+        SceneManager.LoadScene("Title");
+        
     }
 
     public void NoButton()

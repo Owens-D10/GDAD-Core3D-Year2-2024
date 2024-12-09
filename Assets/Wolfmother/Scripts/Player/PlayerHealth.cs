@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -18,6 +17,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public BoxCollider box;
     public Rigidbody rb;
     public GameObject deathScreen;
+    public AudioSource hurt;
 
 
     void Start()
@@ -43,6 +43,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         currentHealth -= damage;
         GetComponent<Animator>().SetTrigger("TakeDamage");
         bloodEffect.Play();
+        hurt.Play();
         if (currentHealth <= 0)
         {
             Die();
@@ -81,7 +82,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
    
     public void QuitButton()
     {
-        Application.Quit();
+        SceneManager.LoadScene("Title");
     }
 
 }

@@ -36,7 +36,8 @@ public class Enemy : MonoBehaviour, IDamagable
     public PlayerHealth player;
     public bool canAttack;
     public int damage = 1;
-    public AudioSource footstep;
+    public AudioSource attack;
+    public AudioSource hurt;
     
     private void Start()
     {
@@ -62,6 +63,7 @@ public class Enemy : MonoBehaviour, IDamagable
         currentHealth -= damage;
         GetComponent<Animator>().SetTrigger("TakeDamage");
         bloodEffect.Play();
+        hurt.Play();
         if (currentHealth <= 0)
         {
             Die();
@@ -151,10 +153,9 @@ public class Enemy : MonoBehaviour, IDamagable
         StartCoroutine(AttackCooldown());
     }
 
-    void EnemyFootstep()
-    {
-        footstep.pitch = UnityEngine.Random.Range(-0.5f, 0f);
-        footstep.Play();
-    }
 
+    public void AttackSFX()
+    {
+        attack.Play();
+    }
 }
