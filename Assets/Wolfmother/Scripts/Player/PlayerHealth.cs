@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamagable
 {
@@ -9,6 +12,13 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public int maxHealth = 7;
     public AudioSource heavyBreathing;
     public ParticleSystem bloodEffect;
+    public PlayerHealth health;
+    public TankControls controls;
+    public WeaponMechanics weapon;
+    public BoxCollider box;
+    public Rigidbody rb;
+    public GameObject deathScreen;
+
 
     void Start()
     {
@@ -43,10 +53,35 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     {
         
         GetComponent<Animator>().SetBool("IsDead", true);
+        health.enabled = false;
+        controls.enabled = false;
+        weapon.enabled = false;
+        box.enabled = false;
+        rb.useGravity = false;
+        heavyBreathing.enabled = false;
     }
 
     void ResetTakeDamage()
     {
         GetComponent<Animator>().ResetTrigger("TakeDamage");
     }
+
+    void ShowDeathScreen()
+    {
+        deathScreen.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+
+    public void RetryButton()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+   
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
+
 }
