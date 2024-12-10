@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +18,6 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public WeaponMechanics weapon;
     public BoxCollider box;
     public Rigidbody rb;
-    public GameObject deathScreen;
     public AudioSource hurt;
 
 
@@ -60,6 +61,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         box.enabled = false;
         rb.useGravity = false;
         heavyBreathing.enabled = false;
+        
     }
 
     void ResetTakeDamage()
@@ -69,9 +71,7 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     void ShowDeathScreen()
     {
-        deathScreen.SetActive(true);
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        SceneManager.LoadScene("DeathScreen");
     }
 
     public void RetryButton()
